@@ -1,0 +1,3 @@
+[submodule "ml_genn"]
+	path = ml_genn
+	url = https://github.com/genn-team/ml_genn.git
