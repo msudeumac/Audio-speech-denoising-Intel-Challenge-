@@ -1,116 +1,108 @@
 # Speech Denoising with Spiking Neural Networks (SNNs)
 
-This project explores the application of **spiking neural networks (SNNs)** for **speech denoising**, aiming to improve the quality of speech signals in noisy environments. The goal is to reduce background noise while preserving important speech characteristics for applications like speech recognition and communication in adverse conditions.
+This project explores the application of **Spiking Neural Networks (SNNs)** for **speech denoising**, implementing multiple approaches to improve the quality of speech signals in noisy environments. The project includes comprehensive analysis tools, visualization capabilities, and different implementation strategies.
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Problem Statement](#problem-statement)
-- [Approach](#approach)
-- [Dataset](#dataset)
+- [Project Overview](#project-overview)
+- [Project Structure](#project-structure)
+- [Implementation Approaches](#implementation-approaches)
+- [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Results](#results)
-- [Contributions](#contributions)
-- [Future Work](#future-work)
+- [Results and Visualizations](#results-and-visualizations)
 - [License](#license)
 
-## Introduction
+## Project Overview
 
-Speech denoising is a key challenge in many applications, from voice assistants to hearing aids. Conventional methods like deep neural networks (DNNs) and traditional filtering algorithms often face limitations in highly dynamic or non-stationary noise environments. Spiking neural networks, which more closely mimic the brain’s neural activity, offer a promising solution by leveraging temporal patterns in signals.
+This research project focuses on speech denoising using Spiking Neural Networks, featuring multiple implementation approaches and comprehensive analysis tools. The project includes preprocessing pipelines, different neural network architectures, and visualization tools for analyzing the results.
 
-This project investigates the potential of SNNs for speech denoising by utilizing their ability to process time-sensitive information efficiently and reduce noise in a way that preserves the integrity of the original speech signal.
+## Project Structure
 
-## Problem Statement
+```
+├── Approach1.py              # First implementation approach
+├── Approach2.py              # Second implementation approach
+├── Pre-processing.py         # Data preprocessing pipeline
+├── Stats.py                  # Statistical analysis tools
+├── hyperparameter.py         # Hyperparameter optimization
+├── mel_spec.py              # Mel spectrogram generation
+├── Graphs_mel.py            # Mel spectrogram visualization
+├── preprocessed_speech/      # Processed speech data
+├── preprocessed_noise/       # Processed noise data
+└── comb_speech/             # Combined speech datasets
+```
 
-In real-world scenarios, speech signals are often contaminated with noise due to factors like background chatter, wind, or equipment interference. These noisy signals can affect the performance of speech recognition systems and hinder clear communication. The aim of this project is to design a system using SNNs that can effectively denoise speech signals and enhance their quality for further processing.
+## Implementation Approaches
 
-## Approach
+### Approach 1
+The first implementation strategy focuses on [brief description of approach 1's unique features]
+- Implementation details in `Approach1.py`
+- Key features and methodology
 
-1. **Modeling the Speech Signal**:
-   The speech signal is transformed into a form suitable for processing by an SNN. This includes encoding the speech data into spike trains that can be input to the network.
-   
-2. **Network Architecture**:
-   A spiking neural network architecture is developed, incorporating a variety of neuron models and synaptic connections that allow the network to process and filter noise over time.
-   
-3. **Training the Network**:
-   The SNN is trained using a dataset of noisy speech signals, with the objective of minimizing the noise while preserving the speech characteristics. Techniques like spike-timing dependent plasticity (STDP) and supervised learning are explored.
+### Approach 2
+The second implementation approach explores [brief description of approach 2's unique features]
+- Implementation details in `Approach2.py`
+- Different methodology and results
 
-4. **Evaluation**:
-   The performance of the model is evaluated by comparing the denoised output with the original clean speech signal using metrics such as **Signal-to-Noise Ratio (SNR)**, **Mean Squared Error (MSE)**, and subjective listening tests.
+## Features
 
-## Dataset
-
-The dataset used for training and evaluation consists of **noisy speech** samples with various background noises, such as traffic, office chatter, and environmental sounds. The clean speech data was sourced from publicly available speech corpora like **LibriSpeech**.
-
-- **Noisy Speech**: Audio recordings with added background noise.
-- **Clean Speech**: Original speech samples without noise contamination.
+- **Comprehensive Preprocessing Pipeline**: Robust preprocessing of speech and noise data
+- **Multiple Implementation Approaches**: Two different strategies for speech denoising
+- **Advanced Visualization Tools**: 
+  - Mel spectrogram analysis and visualization
+  - Distribution comparisons
+  - Denoising performance visualization
+  - Spike filtering analysis
+- **Statistical Analysis**: Detailed statistical tools for performance evaluation
 
 ## Installation
 
-To get started with this project, you'll need Python and a few dependencies. You can install them using pip:
+1. Clone this repository:
+```bash
+git clone [your-repository-url]
+cd [repository-name]
+```
 
+2. Install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-### Dependencies:
-- Python 3.x
-- TensorFlow (or PyTorch) for neural network training
-- NumPy and SciPy for data processing
-- Matplotlib for visualizations
-- Librosa for audio processing
-
 ## Usage
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-username/speech-denoising-snn.git
-   cd speech-denoising-snn
-   ```
+### Preprocessing Data
+```bash
+python Pre-processing.py
+```
 
-2. Preprocess your audio files:
-   The preprocessing script converts audio files into spectrograms or spike trains compatible with the SNN model.
+### Running Different Approaches
+```bash
+# For Approach 1
+python Approach1.py
 
-   ```bash
-   python preprocess.py --input /path/to/audio --output /path/to/processed_data
-   ```
+# For Approach 2
+python Approach2.py
+```
 
-3. Train the model:
-   To start training the model, use the following command:
+### Generating Visualizations
+```bash
+# For mel spectrogram visualization
+python Graphs_mel.py
 
-   ```bash
-   python train.py --epochs 50 --batch_size 32
-   ```
+# For statistical analysis
+python Stats.py
+```
 
-4. Evaluate the model:
-   Once training is complete, use the evaluation script to assess the performance of the model.
+## Results and Visualizations
 
-   ```bash
-   python evaluate.py --model /path/to/trained_model --test_data /path/to/test_data
-   ```
+The project includes several visualization outputs:
 
-5. Denoise a new speech sample:
-   ```bash
-   python denoise.py --input noisy_speech.wav --output denoised_speech.wav
-   ```
+- `FINAL_training_visualization.png`: Final training results
+- `mel_distributions_comparison.png`: Comparison of mel spectrogram distributions
+- `denoising_comparison_epoch.png`: Epoch-wise denoising performance
+- `spike_filtering_comparison.png`: Spike filtering analysis
+- `threshold_comparison.png`: Threshold analysis results
 
-## Results
+## License
 
-The model has been evaluated on several noisy speech samples, and the results show a significant improvement in speech clarity. Key metrics:
-
-- **Signal-to-Noise Ratio (SNR)**: Improved by X dB after denoising.
-- **Mean Squared Error (MSE)**: Reduced by Y%.
-- **Subjective Evaluation**: Listeners reported a clearer and more intelligible speech signal.
-
-## Contributions
-
-- **Spiking Neural Network Architecture**: Developed and implemented an SNN-based model for speech denoising.
-- **Dataset Preparation**: Collected and preprocessed noisy speech data for training.
-- **Evaluation**: Thorough evaluation of the model's performance in both objective metrics and subjective listening tests.
-
-## Future Work
-
-- Experimenting with **different SNN architectures** to improve denoising performance.
-- Implementing real-time speech denoising for live applications.
-- Extending the system to handle more complex background noise scenarios.
+This project is licensed under the terms included in the LICENSE file.
 
