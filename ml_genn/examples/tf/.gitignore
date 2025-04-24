@@ -1,3 +1,0 @@
-# Ignore HDF5 weights etc
-*.h5
-*.hdf5
